@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/95/three.js"></script>
+
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+<style>
+    body{
+        margin : 0;
+        overflow: hidden;
+    }
+    .headText{
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        margin-left: -45px;
+    }
+    #score{
+        color: white;
+        position: fixed;
+        top: 20px;
+        left: 10px;
+    }
+
+    .a-enter-vr,
+    #arjsDebugUIContainer{
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+<p class="headText">Click on the Cat!</p>
+<p id="score">Your score: 0</p>
+
+<a-scene>
+    <a-assets>
+        <img id="image" src="./img/cat.png">
+    </a-assets>
+
+
+    <a-image src="#image" position="0 5 0" id="cat">
+        <a-animation attribute="rotation" to="0 360 0" begin="mousedown"></a-animation>
+    </a-image>
+
+    <a-camera position="0 7 5">
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.003; radiusOuter: 0.006"
+                  material="color: white; shader: flat"
+                  id="cursor">
+        </a-entity>
+    </a-camera>
+</a-scene>
+
+<script>
+    var cat = document.getElementById("cat");
+    var cursor = document.getElementById("cursor");
+    var scoreText = document.getElementById("score");
+    var score = 0;
+
+    cat.addEventListener('mousedown', function () {
+        var v = {
+            x: Math.floor(Math.random() * Math.floor(5)),
+            y: Math.floor(Math.random() * Math.floor(5)),
+            z: 1
+        };
+
+        setTimeout(function(){
+
+            cat.setAttribute('position', v.x + ' ' + v.y + ' ' + v.z);
+
+        }, 1000);
+
+       // cat.setAttribute('velocity', '0 0 0');
+        //cat.setAttribute('angularVelocity', '0 0 0');
+
+        score = score + 1;
+        scoreText.innerHTML = 'Your score: ' + score;
+
+        if(score === 10) {
+            alert("YOU WIN, CONGRATULATIONS!");
+            document.location.reload();
+        }
+    });
+</script>
+</body>
+</html>
