@@ -1,6 +1,6 @@
 
 <img src="https://github.com/AnastasiiaaaaM/WebXR/blob/master/galaxyPortal/assets/img/myLogo2.png" height="60" alt="A-frame Logo"/>   
-# Take a look at my new Portal to the Galaxy demo. 
+# Take a look at my new Portal to the Galaxy <a href="https://ar.stage.saintbox.de/gitHub/galaxyPortal/index.html">demo</a>. 
 
 ### Please use a Hiro marker to run the experience.
 
