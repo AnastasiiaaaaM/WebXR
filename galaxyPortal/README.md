@@ -1,7 +1,7 @@
-# 8th Wall Web Examples - AFrame - Portal
 
-This example shows off the popular portal illusion in web AR using three.js materials and the camera position as an event trigger.
+# <img src="https://cdn-images-1.medium.com/max/1600/1*oORAGqcJB-2MBl0Dt65D4Q.png" height="60" alt="A-frame Logo"/>   Here you can find demos written with an A-Frame. 
 
-![portal-screenshot](../../../images/screenshot-portal.jpg)
+### Please use a Hiro marker to see the Object.
 
-[Try the live demo here](https://apps.8thwall.com/8thWall/aframe_portal)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png" height="300" alt="A-frame Logo"/>
