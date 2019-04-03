@@ -1,5 +1,5 @@
 
-<img src="https://github.com/AnastasiiaaaaM/WebXR/blob/master/galaxyPortal/assets/img/myLogo3.png" height="60" alt="A-frame Logo"/>   
+<img src="https://github.com/AnastasiiaaaaM/WebXR/blob/master/galaxyPortal/assets/img/myLogo2.png" height="60" alt="A-frame Logo"/>   
 # Take a look at my new Portal to the Galaxy demo. 
 
 ### Please use a Hiro marker to run the experience.
