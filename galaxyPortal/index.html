@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Galaxy Portal</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+
+
+    <script src="./js/WebGL.js"></script>
+    <script src="./js/aframe-ar.min.js"></script>
+
+    <script src="./js/portal.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+<a-scene
+        tap-place
+        vr-mode-ui="enabled: false" arjs='sourceType: webcam; debugUIEnabled: false;'>
+
+    <!-- We can define assets here to be loaded when A-Frame initializes -->
+    <a-assets>
+        <img id="galaxy" src="assets/img/galaxy.jpg">
+        <img id="venusTexture" src="assets/textures/4k_venus_surface_512.jpg">
+        <img id="earthTexture" src="assets/textures/4k_earth_daymap_512.jpg">
+        <img id="marsTexture" src="assets/textures/4k_mars_512.jpg">
+        <audio id="audio" src="assets/audio/onyak__backgrounds_PlanetHum.mp3"></audio>
+    </a-assets>
+    <a-sound src="#audio"></a-sound>
+    <a-marker preset="hiro" registerevents>
+
+        <a-entity rotation="-90 0 0" scale="" position="0 0 0">
+            <!-- Hider walls -->
+            <a-entity id="hider-walls" position="0 0 0">
+                <a-plane position="0 21 0" color="red" height="40" width="20" hider-material></a-plane>
+                <a-plane position="-9 0 0" color="blue" height="2" width="20" hider-material id="wallLeft">
+                    <a-animation attribute="position"
+                                 dur="5000"
+                                 easing="linear"
+                                 to="-12 0 0"
+                                 repeat="0"></a-animation>
+                </a-plane>
+                <a-plane position="9 0 0" color="green" height="2" width="20" hider-material id="wallRight">
+                    <a-animation attribute="position"
+                                 dur="5000"
+                                 easing="linear"
+                                 to="12 0 0"
+                                 repeat="0"></a-animation>
+                </a-plane>
+                <a-plane position="0 -21 0" color="black" height="40" width="20" hider-material></a-plane>
+            </a-entity>
+
+            <a-entity id="portal-contents" position="0 0 0">
+
+                <a-sphere material="src: #galaxy" radius="6" side="back" theta-length="180"
+                          position="0 0 -5.3"></a-sphere>
+
+
+                <a-entity scale="" position="0 0 0" visible="false">
+
+                    <a-entity position="0 0 0" class="orbit" rotation="0 50 0" id="orbit">
+                        <a-sphere radius="0.3" id="venus" position="1 0 -1" material="src:#venusTexture">
+                            <a-animation attribute="rotation"
+                                         dur="10000"
+                                         easing="linear"
+                                         to="0 -360 0"
+                                         repeat="indefinite"
+                                         direction="reverse"></a-animation>
+                        </a-sphere>
+
+                        <a-sphere radius="0.3" id="earth" position="0 0 1.5" material="src:#earthTexture">
+                            <a-animation attribute="rotation"
+                                         dur="30000"
+                                         easing="linear"
+                                         to="0 -360 0"
+                                         repeat="indefinite"
+                                         direction="reverse"></a-animation>
+                        </a-sphere>
+
+                        <a-sphere radius="0.3" id="mars" position="-1 0 -1" material="src:#marsTexture">
+                            <a-animation attribute="rotation"
+                                         dur="40000"
+                                         easing="linear"
+                                         to="0 -360 0"
+                                         repeat="indefinite"
+                                         direction="reverse"></a-animation>
+                        </a-sphere>
+                    </a-entity>
+                    <a-animation attribute="visible"
+                                 delay="5000"
+                                 dur="500"
+                                 to="true"
+                                 repeat="0"></a-animation>
+                </a-entity>
+
+            </a-entity>
+        </a-entity>
+
+    </a-marker>
+    <a-camera id="camera"></a-camera>
+
+</a-scene>
+
+<div class="container">
+    <div class="container-logo">
+        <img src="assets/img/myLogo3.png" class="logo">
+        <button class="sound" onclick="soundPlay()">
+            <img src="assets/img/soundOff.png" id="soundOff" class="animated infinite pulse" >
+            <img src="assets/img/soundOn.png" id="soundOn">
+        </button>
+    </div>
+    <div class="container-ui" id="containerUi">
+        <img src="assets/img/pointer.png" class="animated infinite pulse">
+    </div>
+</div>
+<div id="popUpWindowMars" class="popUpWindow animated zoomIn">
+    <h2>Lorem ipsum dolor sit amet</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et facilisis eros. </p>
+    <a href="https://google.com" target="_blank">Mehr zum Thema</a>
+</div>
+<div id="popUpWindowEarth" class="popUpWindow animated zoomIn">
+    <h2>Lorem ipsum dolor sit amet</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et facilisis eros. </p>
+    <a href="https://google.com" target="_blank">Mehr zum Thema</a>
+</div>
+<div id="popUpWindowVenus" class="popUpWindow animated zoomIn">
+    <h2>Lorem ipsum dolor sit amet</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et facilisis eros. </p>
+    <a href="https://google.com" target="_blank">Mehr zum Thema</a>
+</div>
+<script src="./js/main.js"></script>
+</body>
+</html>
